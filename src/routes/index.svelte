@@ -7,21 +7,19 @@
 		'Content-Type': 'application/vnd.api+json'
 	};
 
-	const url = 'https://kitsu.io/api/edge/anime';
+	const url = 'https://kitsu.io/api/edge/anime?page[limit]=20&sort=popularityRank';
 
 	export const load: Load<any, any, { popular: Anime[] }> = async ({ fetch }) => {
 		const res = await fetch(url, { headers });
 		const data = await res.json();
 		if (res.ok) {
-			return {
-				props: { popular: data.data }
-			};
+			return { props: { popular: data.data } };
 		} else {
 			return {
 				props: { popular: null }
 			};
 		}
-	};
+	    };
 </script>
 
 <script lang="ts">
