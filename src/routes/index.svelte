@@ -19,7 +19,7 @@
 				props: { popular: null }
 			};
 		}
-	    };
+	};
 </script>
 
 <script lang="ts">

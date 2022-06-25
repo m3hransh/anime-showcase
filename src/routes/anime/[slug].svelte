@@ -9,7 +9,6 @@
 
 	export const load: Load<any, any, { anime: Anime }> = async ({ fetch, params }) => {
 		const url = `https://kitsu.io/api/edge/anime?filter[slug]=${params.slug}`;
-		console.log(url);
 		const res = await fetch(url, { headers });
 		const data = await res.json();
 		if (res.ok) {
@@ -24,49 +23,50 @@
 
 <script lang="ts">
 	export let anime: Anime;
-	console.log(anime);
 </script>
 
-<div class="anime-details">
-	<h1>{anime.attributes.titles.en_jp}</h1>
-	<div class="img-container">
-		<img src={anime.attributes.coverImage.original} alt={anime.attributes.titles.en_jp} />
+{#if anime?.attributes}
+	<div class="anime-details">
+		<h1>{anime.attributes.titles.en_jp}</h1>
+		<div class="img-container">
+			<img src={anime.attributes.coverImage.original} alt={anime.attributes.titles.en_jp} />
+		</div>
+		<div class="txt-container">
+			<p class="overview">
+				{anime.attributes.description}
+			</p>
+			<p>
+				<span>Release date:</span>
+				{anime.attributes.startDate} <br />
+				<span>Rating:</span>
+				{anime.attributes.averageRating} <br />
+				<span>Show Type: </span>
+				{anime.attributes.showType} <br />
+				<span>Length: </span>
+				{anime.attributes.totalLength} mins
+			</p>
+		</div>
 	</div>
-	<div class="txt-container">
-		<p class="overview">
-			{anime.attributes.description}
-		</p>
-		<p>
-			<span>Release date:</span>
-			{anime.attributes.startDate} <br />
-			<span>Rating:</span>
-			{anime.attributes.averageRating} <br />
-			<span>Show Type: </span>
-			{anime.attributes.showType} <br />
-			<span>Length: </span>
-			{anime.attributes.totalLength} mins
-		</p>
-	</div>
-</div>
+{/if}
 
 <style>
-  h1 {
-    padding: 1rem 0rem 2rem;
-  }
-  p {
-    padding: 1rem 0;
-  }
-  .img-container {
-    width: 100%;
-  }
-  img {
-    width: 100%;
-    border-radius: 1rem;
-  }
-  .anime-details {
-    margin: 2rem 20%;
-  }
-  span {
-    font-weight: bold;
-  }
+	h1 {
+		padding: 1rem 0rem 2rem;
+	}
+	p {
+		padding: 1rem 0;
+	}
+	.img-container {
+		width: 100%;
+	}
+	img {
+		width: 100%;
+		border-radius: 1rem;
+	}
+	.anime-details {
+		margin: 2rem 20%;
+	}
+	span {
+		font-weight: bold;
+	}
 </style>
