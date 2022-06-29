@@ -24,9 +24,22 @@
 
 <script lang="ts">
 	import PopularAnimes from '../components/PopularAnimes.svelte';
+  import SearchAnimes from '../components/SearchAnimes.svelte';
 	export let popular: Anime[];
 </script>
 
 <section>
+  <SearchAnimes />
 	<PopularAnimes {popular} />
 </section>
+
+<style>
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0 1.5rem;
+  }
+</style>

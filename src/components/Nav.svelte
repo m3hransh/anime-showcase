@@ -23,14 +23,14 @@
 		height: 5vh;
 		background-color: #f5f5f5;
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		padding: 0 2rem;
 	}
 	ul {
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 	}
 	nav ul li {
